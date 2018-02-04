@@ -5,20 +5,6 @@ from tkinter.ttk import *
 conn = sqlite3.connect('Datab.db')
 c = conn.cursor()
 
-
-# #Exemple d'identifiant : 1003920006
-# identifiant = input('Entrez l\'identifiant : ')
-#
-# c.execute("SELECT identifiant, nom, prenom FROM ids")
-# liste_ids = c.fetchall()
-# print('La base de données comporte',len(liste_ids),'lignes.')
-#
-
-#
-# print('')
-# print('Identifiant :',identifiant)
-# print('Trouvé à la ligne',i+1,':',liste_ids[i][1],liste_ids[i][2])
-
 fen_validite = Tk()
 fen_validite.title('Test de validité')
 fen_validite.geometry('330x145')
