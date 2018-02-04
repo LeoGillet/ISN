@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.ttk import *
 import sqlite3
 
 conn = sqlite3.connect("Datab.db")

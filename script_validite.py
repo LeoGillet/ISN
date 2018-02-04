@@ -10,6 +10,7 @@ import sqlite3
 conn = sqlite3.connect('Datab.db')
 c = conn.cursor()
 
+#Exemple d'identifiant : 1003920006
 identifiant = input('Entrez l\'identifiant : ')
 
 c.execute("SELECT identifiant, nom, prenom FROM ids")
