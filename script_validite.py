@@ -10,7 +10,7 @@ import sqlite3
 conn = sqlite3.connect('Datab.db')
 c = conn.cursor()
 
-identifiant = '1003920003544'
+identifiant = input('Entrez l\'identifiant : ')
 
 c.execute("SELECT identifiant, nom, prenom FROM ids")
 liste_ids = c.fetchall()
