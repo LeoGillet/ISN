@@ -32,16 +32,16 @@ def rechercheIdentifiant():
     c.execute("SELECT identifiant, nom, prenom FROM ids")
     liste_ids = c.fetchall()
     str_lignes_db = 'La base de données comporte '+str(len(liste_ids))+' lignes.'
-    # try:
+    try:
     lignes_db_validite.config(text=str_lignes_db)
     validite = True
     i = 0
     while liste_ids[i][0] != entree_validite.get():
         i+=1
     resultat = 'Identifiant : '+entree_validite.get()+' trouvé à la ligne '+str(i+1)+' : '+str(liste_ids[i][1])+' '+str(liste_ids[i][2])
-    # except IndexError:
-    #     resultat = 'L\'identifiant n\'est pas présent dans la base de données'
-    #     validite = False
+    except IndexError:
+         resultat = 'L\'identifiant n\'est pas présent dans la base de données'
+         validite = False
 
 
 bouton_validite = Button(fen_validite, text='Rechercher', command = rechercheIdentifiant())

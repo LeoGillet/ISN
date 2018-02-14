@@ -11,7 +11,7 @@ fen.title('Utilitaire Admin')
 
 
 def codeSQL(table):                                                             #RAJOUTER LES EXCEPTIONS DE SQLITE3 POUR UN MAXIMUM DE SWAG
-    commande = """CREATE TABLE IF NOT EXISTS """+table+""" (
+    commande = "CREATE TABLE IF NOT EXISTS "+'"'+table+'"'+'"'"""" (
                                     id integer PRIMARY KEY,
                                     name text NOT NULL,
                                     priority integer,
@@ -22,16 +22,6 @@ def codeSQL(table):                                                             
                                 );"""
     return commande
 
-def ajouterTable(table):
-    codeSQL(table)
-    str_creation = 'La table '+entree_creation.get()+' a été créée'
-    bottom_message_creation = Label(frame_creation, text='blank',fg='grey',font='Helvetica 7 italic')
-    bottom_message_creation.grid(row=3,column=0,padx=0,pady=5)
-    bottom_message_creation.config(text=str_creation)
-
-
-
-#           FRAME CREATION DE TABLES
 frame_creation = LabelFrame(fen, text='Création de tables')
 frame_creation.grid(row=0, column=0)
 
@@ -41,12 +31,18 @@ top_message_creation.grid(row=0,column=0)
 entree_creation = Entry(frame_creation, width=30)
 entree_creation.grid(row=1,column=0,padx=30,pady=10)
 
+bottom_message_creation = Label(frame_creation, text='blank',fg='grey',font='Helvetica 7 italic')
+bottom_message_creation.grid(row=3,column=0,padx=0,pady=5)
+
+def ajouterTable(table):
+    global bottom_message_creation
+    c.execute(codeSQL(table))
+    c.commit()
+    str_creation = 'La table '+entree_creation.get()+' a été créée'
+    bottom_message_creation.config(text=str_creation)
+
 bouton_valider_creation = Button(frame_creation, text='Créer', command=ajouterTable(entree_creation.get()))
 bouton_valider_creation.grid(row=2,column=0,padx=30,pady=10)
-
-
-
-
 
 fen.mainloop()
 
