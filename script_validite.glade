@@ -2,13 +2,15 @@
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkImage" id="flechealeatoire">
-    <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">fleche-aleatoire_318-48477.jpg</property>
+    <property name="xpad">10</property>
   </object>
   <object class="GtkWindow" id="mainWindow">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Simulation de passage de carte</property>
+    <property name="window_position">center</property>
+    <property name="icon">key-card.png</property>
     <signal name="destroy" handler="on_mainWindow_destroy" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -19,27 +21,78 @@
           <object class="GtkLabel" id="greets">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="ypad">8</property>
             <property name="label" translatable="yes">Outil de test de validité</property>
+            <attributes>
+              <attribute name="font-desc" value="Segoe UI Bold 10"/>
+              <attribute name="style" value="oblique"/>
+              <attribute name="weight" value="heavy"/>
+              <attribute name="variant" value="normal"/>
+              <attribute name="scale" value="1"/>
+              <attribute name="foreground" value="#88878a898585"/>
+            </attributes>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="padding">16</property>
             <property name="position">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="BoutonRandom">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="image">flechealeatoire</property>
-            <property name="image_position">right</property>
+            <property name="halign">center</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">5</property>
+            <property name="resize_mode">immediate</property>
+            <property name="always_show_image">True</property>
             <signal name="clicked" handler="on_BoutonRandom_clicked" swapped="no"/>
+            <child>
+              <object class="GtkGrid" id="grid1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="texteBouton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="tooltip_markup" translatable="yes">Passons une carte choisie au hasard!</property>
+                    <property name="tooltip_text" translatable="yes">Passons une carte choisie au hasard!</property>
+                    <property name="xpad">88</property>
+                    <property name="label" translatable="yes">Simuler un passage de carte</property>
+                    <property name="use_underline">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage" id="image1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="stock">gtk-jump-to</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                    <property name="width">1</property>
+                    <property name="height">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="padding">2</property>
             <property name="position">1</property>
           </packing>
         </child>
@@ -47,11 +100,27 @@
           <object class="GtkLabel" id="Sortie">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="ypad">15</property>
+            <attributes>
+              <attribute name="foreground" value="#7373d2d11615"/>
+            </attributes>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinner" id="spinner2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="active">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>

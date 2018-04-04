@@ -1,4 +1,3 @@
-import numpy as np
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 import sqlite3
 from lectureCode1 import choixCode
