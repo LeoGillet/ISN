@@ -16,7 +16,7 @@ def simulationPassage():
 def outCode():
     global sortie
     global v
-    
+
     root = Tk()#on ouvre une fenêtre
     root.title('Passage de carte')#on lui met un titre
     root.geometry('240x75')#on modifie sa taille
@@ -26,16 +26,13 @@ def outCode():
 
     simuler = Button(root, text = 'Simuler',command = simulationPassage)#quand on clique on fait appelle à la procédure simulationPassage()
     simuler.grid(row=1, column=1, padx=10,pady=5)
-	
+
     v = StringVar()
     sortie = Label(root, textvariable = v)#on affiche le code
     sortie.grid(row=1, column=3, padx=10,pady=5)
-    
 
-    
+
+
 
 outCode()
 simulationPassage()
-
-
-
