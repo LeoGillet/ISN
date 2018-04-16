@@ -2,7 +2,7 @@ from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 import sqlite3
 from lectureCode1 import choixCode
 
-class PassageCarte:
+class PassageCarte:                                             #Définition de la classe PassageCarte
     global rechercheIdentifiant
     def __init__(self):
         global c
