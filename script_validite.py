@@ -11,6 +11,7 @@ class PassageCarte:
         interface = Gtk.Builder()
         interface.add_from_file('script_validite.glade')
         self.Sortie = interface.get_object("Sortie")
+        self.Entree = interface.get_object("Entree")
         interface.connect_signals(self)
 
     def rechercheIdentifiant(idCarte):
@@ -34,6 +35,9 @@ class PassageCarte:
 
     def on_BoutonRandom_clicked(self, widget):
         self.Sortie.set_text(rechercheIdentifiant(choixCode()))
+
+    def on_BoutonEntree_clicked(self, widget):
+        self.Sortie.set_text(rechercheIdentifiant(self.Entree.get_text()))
 
 if __name__ == "__main__":
     PassageCarte()
