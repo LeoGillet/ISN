@@ -5,7 +5,7 @@ import sqlite3
 date = datetime.datetime.now()
 #-----------------------------------FONCTIONS----------------------------------#
 def TestPortail(code):
-    #TEST DE STATUE 
+    #TEST DE STATUT
     Qualite=2
     conn = sqlite3.connect('Datab.db')
     c = conn.cursor()
@@ -30,24 +30,21 @@ def TestPortail(code):
     date = datetime.datetime.now()
     Heure= int(date.strftime("%H"))+int(date.strftime("%M"))/60
     if  date.strftime("%A")==str('Saturday') or date.strftime("%A")==str('Sunday'):
-        Portail=0
+        validite = 0
         
     elif Qualite == 0  and 7.5<Heure<18.5:
-        Portail=1
-
+        validite = 1
     elif Qualite == 1  and 7.5<Heure<22:
-        Portail=1    
-        
+        validite = 1    
     elif Qualite == 2:
-        Portail=1
-
+        validite = 1
     else:
-        Portail=0
-    return(Portail)#renvoi l'état du portail 1=ouvert , 0=fermer
+        validite = 0
+    return validite #renvoit l'état du portail 1=ouvert , 0=fermé
 
 
 #AFFICHAGE
-def LCD(Portail):
+def LCD(validite):
     #RECHERCHE DU NOM ET PRENOM DE L'INDIVIDU
     conn = sqlite3.connect('Datab.db')
     c = conn.cursor()
@@ -56,7 +53,7 @@ def LCD(Portail):
 
     longueurdb = len(listeindividus)
     for x in range (0,longueurdb-1):
-        if(listeindividus[x][0]==code):
+        if listeindividus[x][0]==lOut:
             profilUser = listeindividus[x][1]+' '+listeindividus[x][2]
     #Création de la fenétre
     fen=Tk()
@@ -69,21 +66,21 @@ def LCD(Portail):
 
 
     #Partie test de l'affichage
-    if Portail==0:
+    if validite == 0:
         NameUser=Label(fen, text=profilUser, fg='green', bg='black')
         NameUser.pack()
         EtatPortail=Label(fen, text='Le portail est fermé', fg='green', bg='black')
         EtatPortail.pack()
         HeureCourante=Label(fen, text=Temps, fg='green', bg='black')
         HeureCourante.pack()
-    elif Portail==1:
+    elif validite == 1:
         NameUser=Label(fen, text=profilUser, fg='green', bg='black')
         NameUser.pack()
         EtatPortail=Label(fen, text='Le portail est ouvert', fg='green', bg='black')
         EtatPortail.pack()
         HeureCourante=Label(fen, text=Temps, fg='green', bg='black')
         HeureCourante.pack()
-    elif Portail ==-1:
+    elif validite == -1:
         EtatPortail=Label(fen, text='Problème de carte', fg='green', bg='black')
         EtatPortail.pack()
         HeureCourante=Label(fen, text=Temps, fg='green', bg='black')
@@ -97,5 +94,5 @@ def LCD(Portail):
     fen.mainloop()
 
 #-----------------------------------PARIE OPERATIVE------------------------------#
-code=str(1003920020)
-LCD(TestPortail(code))
+##code=str(1003920020)
+##LCD(TestPortail(code))

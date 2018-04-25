@@ -34,11 +34,15 @@ class PassageCarte:                                             #Définition de 
         Gtk.main_quit()
 
     def on_BoutonRandom_clicked(self, widget):
+        global lOut
+        lOut = choixCode()
         self.Sortie.set_text(rechercheIdentifiant(choixCode()))
-
+        
     def on_BoutonEntree_clicked(self, widget):
+        global lOut
+        lOut = self.Entree.get_text()
         self.Sortie.set_text(rechercheIdentifiant(self.Entree.get_text()))
-
-if __name__ == "__main__":
-    PassageCarte()
-    Gtk.main()
+        
+##if __name__ == "__main__":
+##    PassageCarte()
+##    Gtk.main()
