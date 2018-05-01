@@ -26,6 +26,7 @@ def choixCode():
     fichier.close
 
     #renvoie une ligne aleatoire du fichier .txt
-    return maLigne
+    lOut = maLigne
+    return lOut
 
 
