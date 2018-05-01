@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from random import randint
-from time import time
 import os
 
 def choixCode():
